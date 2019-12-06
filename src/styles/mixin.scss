@@ -1,0 +1,23 @@
+@function vw($x, $vpw: 750) {
+  @return ($x / $vpw * 100) * 1vw;
+}
+
+@mixin center {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+@mixin bgimage($url) {
+  background-image: url($url);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+@mixin wh($width, $height) {
+  width: vw($width);
+  height: vw($height);
+}
+
