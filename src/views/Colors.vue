@@ -44,6 +44,7 @@
     <!-- game over -->
     <div class="game_over" v-if="remain_time == 0">
       Game Over
+      <button type="button" class="replay_btn" @click="replay"></button>
     </div>
   </div>
 </template>
@@ -72,6 +73,14 @@ export default {
       this.timer = setInterval(() => {
         this.remain_time--;
         if (this.remain_time == 0) {
+          // 游戏结束结算
+          let storage = localStorage.getItem('Colors');
+          if (!storage) {
+            localStorage.setItem('Colors', this.score);
+          } else {
+            storage += ',' + this.score;
+            localStorage.setItem('Colors', storage);
+          }
           clearInterval(this.timer);
         }
       }, 1000);
@@ -79,6 +88,18 @@ export default {
     stop() {
       this.isStop = true;
       clearInterval(this.timer);
+    },
+    replay() {
+      this.isStart = false;
+      this.colspan = 2;
+      this.size = 0;
+      this.ramArr = [];
+      this.which = [0, 0];
+      this.score = 0;
+      this.seclevel = 1;
+      this.remainTime = 3;
+      this.remain_time = 10;
+      this.changeColors();
     },
     goback() {
       this.$router.go(-1);
@@ -311,13 +332,20 @@ export default {
   .game_over {
     @include center;
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: center;
+    flex-wrap: wrap;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: vw(66);
     font-weight: 700;
     z-index: 99;
+    .replay_btn {
+      display: block;
+      margin: vw(50) vw(300);
+      @include wh(150, 150);
+      @include bgimage('../assets/images/replay_btn.png');
+    }
   }
 }
 </style>

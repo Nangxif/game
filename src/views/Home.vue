@@ -6,7 +6,7 @@
         v-for="(item, index) in router_list"
         :key="index"
         class="list_item"
-        @click="go_link(item.link, item.islocal)"
+        @click="go_link(item.type, item.link, item.islocal, item.rule)"
       >
         <div class="title">{{ item.title }}</div>
         <div class="desc">{{ item.desc }}</div>
@@ -18,53 +18,75 @@
 
 <script>
 import Scrollbar from 'smooth-scrollbar';
+import { mapMutations } from 'vuex';
 export default {
   name: 'home',
   data() {
     return {
       router_list: [
         {
+          type: 'Colors',
           title: '找不同',
           desc: '该游戏适合睡眠质量不佳者',
           link: '/colors',
-          islocal: true
+          islocal: true,
+          rule: [
+            '1.每回合十秒钟之内找出与其他颜色不同的格子；',
+            '2.难度越高，每回合分数越多；',
+            '3.每个难度等级有四个回合。'
+          ]
         },
         {
+          type: '',
           title: '性格测试',
           desc: '',
           link: '',
-          islocal: true
+          islocal: true,
+          rule: []
         },
         {
+          type: '',
           title: '你画我猜',
           desc: '没有天赋就不要学人家画画',
           link: 'https://nangxif.github.io/palettes/index.html',
-          islocal: false
+          islocal: false,
+          rule: []
         },
         {
+          type: '',
           title: '掷骰子',
           desc: '',
-          link: '',
-          islocal: true
+          link: '/bigsmall',
+          islocal: true,
+          rule: []
         },
         {
+          type: 'none',
           title: '开发中…',
           desc: '',
           link: '',
-          islocal: true
+          islocal: true,
+          rule: []
         }
       ]
     };
   },
   methods: {
-    go_link(link, islocal) {
-      if (islocal) {
-        this.$router.push({
-          path: link
-        });
-      } else {
-        window.location.href = link;
-      }
+    ...mapMutations([
+      'typeM',
+      'isRuleM',
+      'linkDataM',
+      'isChooseM',
+      'ruleContentM'
+    ]),
+    go_link(type, link, islocal, rule) {
+      this.typeM(type);
+      this.isChooseM(true);
+      this.ruleContentM(rule);
+      this.linkDataM({
+        link,
+        islocal
+      });
     }
   },
   mounted() {
