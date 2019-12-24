@@ -50,15 +50,19 @@ export default {
           desc: '没有天赋就不要学人家画画',
           link: 'https://nangxif.github.io/palettes/index.html',
           islocal: false,
-          rule: []
+          rule: ['一个画板']
         },
         {
           type: '',
-          title: '掷骰子',
-          desc: '',
+          title: '买大买小',
+          desc: '赌博不规范，亲人两行泪',
           link: '/bigsmall',
           islocal: true,
-          rule: []
+          rule: [
+            '1.先买定大小；',
+            '2.买定离手；',
+            '3.超过9点（不包括9）算小，其余算大。'
+          ]
         },
         {
           type: 'none',
