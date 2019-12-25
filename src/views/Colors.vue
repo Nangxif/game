@@ -334,6 +334,7 @@ export default {
     display: flex;
     align-content: center;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;

@@ -10,6 +10,12 @@ import '@/styles/common.scss';
 
 Vue.config.productionTip = false;
 
+import filters from '@/filters/filter';
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key]);
+});
+
 new Vue({
   router,
   store,
