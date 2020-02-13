@@ -1,5 +1,5 @@
-import fixWeChatForm from './fixWeChatForm';
-fixWeChatForm();
+// import fixWeChatForm from './fixWeChatForm';
+// fixWeChatForm();
 
 function injectCSS(text = '') {
   var $style = document.createElement('style');

@@ -82,7 +82,6 @@
     <button type="button" @click="dice" class="dice_btn">买定离手</button>
     <div class="head left" v-if="buywhich == 0"></div>
     <div class="head right" v-if="buywhich == 1"></div>
-
     <!-- 结果 -->
     <div class="result_wrapper" v-if="isEnd">
       <div>

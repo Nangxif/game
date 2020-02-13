@@ -91,9 +91,20 @@ function filterToSeparation(data, interval = 3, symbol = ',') {
     .join('');
   return finVal;
 }
+/*
+替换字符
+包含start不包含end
+*/
+
+function filterToHide(data, start, end, symbol = '*') {
+  let item = new Array(end - start).fill(symbol);
+  let val = data.toString().split('');
+  return [...val.slice(0, start), ...item, ...val.slice(end)].join('');
+}
 export default {
   filterToDateAndTime,
   filterToDecimal,
   filterToSystem,
-  filterToSeparation
+  filterToSeparation,
+  filterToHide
 };

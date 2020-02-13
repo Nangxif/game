@@ -11,6 +11,7 @@
         <div class="title">{{ item.title }}</div>
         <div class="desc">{{ item.desc }}</div>
       </div>
+      <input type="text" placeholder="aaa" />
     </div>
     <div class="grassland_bottom"></div>
   </div>
@@ -19,6 +20,8 @@
 <script>
 import Scrollbar from 'smooth-scrollbar';
 import { mapMutations } from 'vuex';
+// import fixWeChatForm from '../rpf/un/fixWeChatForm';
+// fixWeChatForm();
 export default {
   name: 'home',
   data() {
@@ -105,6 +108,9 @@ export default {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  input {
+    user-select: text !important;
+  }
   .leaf_top {
     @include wh(750, 230);
     @include bgimage('../assets/images/leaf_top.png');
