@@ -3,7 +3,11 @@ const state = {
 };
 const getters = {
   getUserName(state) {
+<<<<<<< HEAD
     return '其实我就是' + state.userName + 'dev';
+=======
+    return '其实我就是' + state.userName;
+>>>>>>> dev第一次提交
   }
 };
 const mutations = {
