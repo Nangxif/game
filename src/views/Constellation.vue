@@ -8,6 +8,5 @@ export default {
 </script>
 <style scoped>
 .constellation {
-    
 }
 </style>

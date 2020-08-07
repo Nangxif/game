@@ -11,7 +11,6 @@
         <div class="title">{{ item.title }}</div>
         <div class="desc">{{ item.desc }}</div>
       </div>
-      <input type="text" placeholder="aaa" />
     </div>
     <div class="grassland_bottom"></div>
   </div>
@@ -19,7 +18,7 @@
 
 <script>
 import Scrollbar from 'smooth-scrollbar';
-import { mapMutations } from 'vuex';
+import { mapState, mapMutations,mapGetters } from 'vuex';
 // import fixWeChatForm from '../rpf/un/fixWeChatForm';
 // fixWeChatForm();
 export default {
@@ -78,14 +77,27 @@ export default {
       ]
     };
   },
+  computed: {
+    ...mapState(['userName']),
+    // ...mapGetters('bmodule',{
+    //   userNames: 'getUserName'
+    // }),
+    ...mapGetters('amodule',{
+      userNames: 'getUserName'
+    })
+  },
   methods: {
-    ...mapMutations([
-      'typeM',
-      'isRuleM',
-      'linkDataM',
-      'isChooseM',
-      'ruleContentM'
-    ]),
+    // ...mapMutations([
+    //   'typeM',
+    //   'isRuleM',
+    //   'linkDataM',
+    //   'isChooseM',
+    //   'ruleContentM'
+    // ]),
+    // ...mapActions('bmodule',['actUserName']),
+    ...mapMutations({
+      typeM: 'typeM'
+    }),
     go_link(type, link, islocal, rule) {
       this.typeM(type);
       this.isChooseM(true);
@@ -100,6 +112,16 @@ export default {
     Scrollbar.init(document.querySelector('.home'), {
       thumbMinSize: 10
     });
+    // this.$store.commit('amodule/setUserName', 'shaguama');
+    // this['amodule/setUserName']('wssg');
+    // this.setA('aacc');
+    // console.log(this.getUs);
+    // this.actUserName('我是新来的');
+    console.log(this.userName);
+    console.log(this.userNames);
+    this.typeM(false);
+    // this.setUs('我是C');
+    // console.log(this.actUs);
   }
 };
 </script>

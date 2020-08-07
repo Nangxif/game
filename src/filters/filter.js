@@ -25,23 +25,7 @@ function filterToDecimal(data, count = 1) {
     return data;
   } else {
     let returnVal = data.toFixed(count);
-    let finVal = returnVal;
-    for (let i = 0; i < count; i++) {
-      // 最后一位是0的去掉
-      if (returnVal.endsWith('0')) {
-        returnVal = returnVal.slice(0, -1);
-        finVal = returnVal;
-        // 去掉0之后最后一位是小数点的去掉小数点
-        if (finVal.endsWith('.')) {
-          finVal = finVal.slice(0, -1);
-          break;
-        }
-      } else {
-        finVal = returnVal;
-        break;
-      }
-    }
-    return finVal;
+    return Number(returnVal);
   }
 }
 /*
