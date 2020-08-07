@@ -3,7 +3,7 @@ const state = {
 };
 const getters = {
   getUserName(state) {
-    return '其实我就是' + state.userName + 'master';
+    return '其实我就是' + state.userName + 'dev';
   }
 };
 const mutations = {
